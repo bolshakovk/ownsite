@@ -1,13 +1,465 @@
-body {
+*,::before,::after{
+  box-sizing: border-box;
+}
+body{
+  transition: padding-top 0.5s, background-color 0.5s, color 0.5s; /* Обратите внимание на добавленное свойство padding-top */
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff; /* Цвет текста */
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+img{
+  width: 100%;
+  height: 100%;
+}
+h1, h2, h3{
+  margin: 0;
+}
+.nav-menu {
+  margin-right: 20px;
+  display: flex;
+}
+
+.nav-link {
+  margin-left: 10px;
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #4facfe;
+}
+.header{
+  display: flex;
+  justify-content:end;
+  align-items: center;
+  padding: 15px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 300;
+  color: gray;
+  z-index: 1000; /* Уровень накладывания хедера над контентом */
+}
+.header_logo{
+  color: inherit;
+  text-decoration: none;
+}
+.hero{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  max-width: 1230px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.hero_container{
+  margin: 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(290px, 1fr));
+  grid-gap: 20px;
+}
+.hero_about{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero_title{
+  margin-bottom: 20px;
+  font-size: 48px;
+  line-height: 1.1;
+}
+.hero_subtitle{
+  font-size: 32px;
+  font-weight: 400;
+}
+.hero_links{
+  display: flex;
+}
+.hero_link{
+  margin-right: 10px;
+  font-size: 30px;
+  color: black;
+  transition: color 0.3s;
+}
+.hero_link:hover{
+  color: #4facfe;
+}
+.hero_box{
+  max-width: 500px;
+  justify-self: center;
+  overflow: hidden;
+  border: 10px solid #fff;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  animation: ava-animate 5s infinite alternate;
+  margin-bottom: 200px;
+}
+.hero_box_image{
+  animation: ava-bg 3s infinite alternate;
+}
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-switch label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.theme-switch label::before {
+  content: "";
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  left: 2px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+
+.theme-switch input:checked + label {
+  background-color: #2196F3;
+}
+
+.theme-switch input:focus + label {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.theme-switch input:checked + label::before {
+  transform: translateX(26px);
+}
+.theme-switch .sun-icon,
+.theme-switch .moon-icon {
+  font-size: 21px; /* Размер значков */
+}
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+.dark-mode .nav-link {
+  color: white; /* Цвет текста в темной теме */
+}
+.dark-mode .nav-link:hover {
+  color: #4facfe; /* Цвет текста при наведении в темной теме */
+}   
+@keyframes ava-animate{
+  0%{
+      border-radius: 52% 48% 54% 46% / 0% 0% 100% 100% ; 
+  }
+  40%{
+      border-radius: 52% 48% 54% 46% / 36% 26% 74% 64%   ;
+  }
+  60%{
+      border-radius: 52% 48% 54% 46% / 60% 66% 34% 40%   ;
+  }
+  80%{
+      border-radius: 84% 16% 54% 46% / 47% 55% 45% 53%   ;
+  }
+  100%{
+      border-radius: 18% 82% 54% 46% / 62% 36% 64% 38%   ;
+  }
+}
+@keyframes ava-bg{
+  from{
+    backdrop-filter: hue-rotate(0);
+    -webkit-backdrop-filter: hue-rotate(0);
+  }
+  to{
+    backdrop-filter: hue-rotate(0);
+    -webkit-backdrop-filter: hue-rotate(90deg);
+  }
+}
+@media screen and (max-width: 320px) {
+  .toggle-backend-h {
+    font-size: 25px;
+  }
+  body, h1, h2, h3, p, a, .nav-link {
+    margin-left: 20px;
+    font-size: 75%;
+    .hero_title{
+      font-size: 24px;
+    }
+    .hero_about{
+      font-size: 24px;
+    }
+    .header{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+  .nav-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(290px, 1fr));
+    grid-gap: 20px;
+  }
+
+  .nav-link {
+    margin-right: 0; /* Убирает правый отступ между элементами */
+  }
+}
+
+@media screen and(max-width:978px){
+  .nav-row {
+    flex-wrap: wrap; /* Перенос элементов на новую строку */
+  }
+  .nav-link{
+    width: 50%; /* Ширина элементов на половину экрана */
+    padding-left: 10px; /* Отступ слева для элементов в первом ряду */
+    padding-right: 10px; /* Отступ справа для элементов во втором ряду */
+  }
+  .nav-row{
+    flex-wrap: wrap;
+  }
+  .header{
+      text-align: center;
+  }
+  .hero{
+      padding-top: 300px;
+  }
+  .hero_container{
+      grid-row-gap:20px;
+  }
+  .hero_title{
+      font-size:28px;
+      margin-bottom: 10px;
+  }
+  .hero_subtitle{
+      font-size: 22px;
+      font-weight: 400;
+  }
+  .hero_description{
+      font-size: 14px;
+  }
+  .hero_about{
+      text-align: center;
+  }
+  .hero_link{
+      justify-content: center;
+  }
+  .hero_box{
+      max-width: 350px;
+  }
+}
+.tech-stack-content-container {
+  display: flex;
+  /* Другие стили */
+}
+
+.centered-container {
+  height: 100vh; /* Занимает всю высоту экрана */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Выравнивание по центру вертикально */
+  align-items: center; /* Выравнивание по центру горизонтально */
+  text-align: center; /* Центрирует текст */
+}
+.skills-list {
+  list-style-type: none;
+  font-size: 18px; /* Увеличиваем размер шрифта */
+  max-height: 0;
+  overflow: hidden;
+  flex: 1;
+}
+
+.skills-list.visible {
+  max-height: 250px; /* Максимальная высота списка */
+  overflow: visible;
+}
+
+.toggle-backend-h {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.toggle-backend-h:hover {
+  transition: color 0.3s;
+  color: #4facfe;
+}
+.toggle-backend-div{
+  margin-left: 100px;
+}
+.skill-images {
+  display: flex;
+  justify-content: center;
+}
+/* Скрываем иконки по умолчанию */
+.backend-icon-grid {
+  width: 50px;
+  display: none;
+  grid-template-columns: repeat(3, 1fr); /* Определяем 3 колонки */
+  gap: 10px; /* Расстояние между иконками */
+}
+
+/* Показываем иконки, когда contentVisible = true */
+.backend-icon-grid.visible {
+  display: grid;
+}
+/* Скрываем иконки по умолчанию */
+.frontend-icon-grid {
+  width: 50px;
+  display: none;
+  grid-template-columns: repeat(3, 1fr); /* Определяем 3 колонки */
+  gap: 10px; /* Расстояние между иконками */
+}
+
+/* Показываем иконки, когда contentVisible = true */
+.frontend-icon-grid.visible {
+  display: grid;
+}
+.skill {
+  margin-bottom: 10px; /* Пространство между элементами списка */
+  margin-left: 30px;
+}
+
+.icon {
+  font-size: 48px; /* Задайте размер иконок */
+  width: 50px;
+  text-align: center;
+  margin: 0 auto;
+}
+.skills-and-icons.visible {
+  flex-direction: row; /* Изменяем направление flex на горизонтальное */
+}
+
+
+.body{
+  margin-top: 80px;
+}
+.content{
+  display: flex;
+  justify-content:left;
+}
+.backend-content-container {
+  margin-bottom: 100px; /* Регулируйте значение отступа между Бэкенд и Фронтенд по вашему желанию */
+}
+
+.frontend-content-container {
+  margin-top: 20px; /* Регулируйте значение отступа между Бэкенд и Фронтенд по вашему желанию */
+}
+.icon-skill-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px; /* Задайте ширину 100% */
+}
+
+/* Анимация для появления и исчезания страницы */
+.page-enter {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page-exit {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 660px) {
+  .tech-stack-content-container{
+    display: grid;
+  }
+  .theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  .theme-switch label {
+    width: 60px;
+    height: 34px;
+  }
+  
+  .theme-switch label::before {
+    content: "";
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    left: 2px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.4s;
+  }
+  .header{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    text-align: center;
+  }
+  .nav-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(290px, 1fr));
+    grid-gap: 20px;
+  }
+  .hero_box{
+    max-width: 200px;
+  }
+  .theme-switch {
+    width: 60px; /* Ширина авто, чтобы подстроиться под контент */
+    height: 34px; /* Высота элемента, по желанию */
+  }
+
+  .theme-switch label {
+    /* Дополнительные стили для маленьких экранов */
+    width: 60px; /* Ширина авто, чтобы подстроиться под контент */
+    height: 34px; /* Высота элемента, по желанию */
+  }
 }
